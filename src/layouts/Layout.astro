@@ -1,6 +1,14 @@
 ---
 import "@styles/global.css";
 import ScrollProgress from "@components/ui/ScrollProgress";
+
+// ─── Metadatos para vista previa en WhatsApp / redes sociales ───────────────
+// Actualiza SITE_URL con el dominio real cuando se publique
+const SITE_URL    = "https://misxvpaolatlala.org";
+const OG_TITLE    = "Mis XV Años — Paola Vázquez Tlalapango";
+const OG_DESC     = "Con toda la alegría de mi corazón, te invito a celebrar conmigo este momento tan especial. 22 de mayo de 2026 · Ecatepec.";
+const OG_IMAGE    = `${SITE_URL}/hero.jpg`;
+// ─────────────────────────────────────────────────────────────────────────────
 ---
 
 <!doctype html>
@@ -11,10 +19,47 @@ import ScrollProgress from "@components/ui/ScrollProgress";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="theme-color" content="#1a1f3c" />
-    <title>Mis XV Paola | Invitación</title>
+
+    <title>{OG_TITLE}</title>
+    <meta name="description" content={OG_DESC} />
+
+    <!-- Open Graph (Facebook, WhatsApp, Telegram, LinkedIn) -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={SITE_URL} />
+    <meta property="og:title"       content={OG_TITLE} />
+    <meta property="og:description" content={OG_DESC} />
+    <meta property="og:image"       content={OG_IMAGE} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale"      content="es_MX" />
+    <meta property="og:site_name"   content="Invitación XV Paola" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={OG_TITLE} />
+    <meta name="twitter:description" content={OG_DESC} />
+    <meta name="twitter:image"       content={OG_IMAGE} />
   </head>
   <body>
     <ScrollProgress client:load />
     <slot />
+
+    <script is:inline>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // solo anima una vez
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".reveal, .line-draw").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>

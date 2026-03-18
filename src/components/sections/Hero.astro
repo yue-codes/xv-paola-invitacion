@@ -35,13 +35,13 @@ import Countdown from "@components/ui/Countdown";
 
     <!-- Nombre animado -->
     <h1
-      class="hero-name text-5xl sm:text-6xl md:text-7xl font-display font-light leading-tight"
+      class="hero-name text-5xl sm:text-6xl md:text-7xl font-display font-normal leading-tight"
       style="color: var(--color-text);"
     >
       Paola
       <br />
       <span
-        class="text-3xl sm:text-4xl md:text-5xl font-display italic font-light"
+        class="text-3xl sm:text-4xl md:text-5xl font-display italic font-normal"
         style="color: var(--color-gold);"
       >
         Vázquez Tlalapango
@@ -50,7 +50,7 @@ import Countdown from "@components/ui/Countdown";
 
     <!-- Fecha -->
     <p
-      class="text-sm uppercase tracking-[0.25em] font-body font-light"
+      class="text-sm uppercase tracking-[0.25em] font-body font-normal"
       style="color: var(--color-accent); opacity: 0.9;"
     >
       22 · mayo · 2026
@@ -67,18 +67,19 @@ import Countdown from "@components/ui/Countdown";
   </div>
 
   <!-- Scroll indicator -->
-  <div
-    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-    aria-hidden="true"
+  <a
+    href="#invitacion"
+    class="scroll-btn absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+    aria-label="Ver invitación"
   >
     <span
       class="text-[10px] uppercase tracking-widest font-body"
       style="color: var(--color-accent); opacity: 0.6;"
     >
-      scroll
+      invitación
     </span>
     <div class="scroll-arrow" style="border-color: var(--color-gold);"></div>
-  </div>
+  </a>
 </section>
 
 <style>
@@ -97,6 +98,17 @@ import Countdown from "@components/ui/Countdown";
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Botón scroll */
+  .scroll-btn {
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .scroll-btn:hover,
+  .scroll-btn:focus-visible {
+    opacity: 0.8;
   }
 
   /* Flecha de scroll animada */

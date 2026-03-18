@@ -55,19 +55,19 @@ const events: Event[] = [
   <!-- Encabezado -->
   <div class="flex flex-col items-center text-center mb-16">
     <span
-      class="text-xs uppercase tracking-[0.3em] font-body mb-4"
+      class="reveal text-xs uppercase tracking-[0.3em] font-body mb-4"
       style="color: var(--color-accent); opacity: 0.85;"
     >
       te esperamos
     </span>
     <h2
-      class="font-display text-3xl sm:text-4xl font-light"
-      style="color: var(--color-text);"
+      class="reveal font-display text-3xl sm:text-4xl font-normal"
+      style="color: var(--color-text); transition-delay: 0.1s;"
     >
       Dónde &amp; Cuándo
     </h2>
     <div
-      class="h-px w-20 mt-5"
+      class="line-draw h-px w-20 mt-5"
       style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
     ></div>
   </div>
@@ -86,7 +86,7 @@ const events: Event[] = [
     <div class="flex flex-col gap-16">
       {
         events.map((ev, i) => (
-          <div class={`timeline-item flex gap-6 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse md:flex-row"}`}>
+          <div class={`reveal timeline-item flex gap-6 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse md:flex-row"}`} style={`transition-delay: ${i * 0.15}s`}>
 
             <!-- Punto en la línea -->
             <div class="timeline-dot-col flex flex-col items-center">
@@ -126,7 +126,7 @@ const events: Event[] = [
               <!-- Info -->
               <div class="p-5 flex flex-col gap-3">
                 <h3
-                  class="font-display text-xl font-light leading-snug"
+                  class="font-display text-xl font-normal leading-snug"
                   style="color: var(--color-text); white-space: pre-line;"
                 >
                   {ev.title}
@@ -137,7 +137,7 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-light"
+                      class="text-sm font-body font-normal"
                       style="color: var(--color-text); opacity: 0.8;"
                     >
                       {ev.date}
@@ -146,7 +146,7 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-light"
+                      class="text-sm font-body font-normal"
                       style="color: var(--color-text); opacity: 0.8;"
                     >
                       {ev.time}
@@ -155,7 +155,7 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-light"
+                      class="text-sm font-body font-normal"
                       style="color: var(--color-text); opacity: 0.8;"
                     >
                       {ev.city}

@@ -33,7 +33,7 @@ function Unit({ value, label }: UnitProps) {
   return (
     <div class="flex flex-col items-center gap-1">
       <span
-        class="text-4xl md:text-5xl font-display font-light tabular-nums"
+        class="text-4xl md:text-5xl font-display font-normal tabular-nums"
         style={{ color: "var(--color-gold)" }}
       >
         {pad(value)}
@@ -51,7 +51,7 @@ function Unit({ value, label }: UnitProps) {
 function Separator() {
   return (
     <span
-      class="text-3xl font-light pb-4 select-none"
+      class="text-3xl font-normal pb-4 select-none"
       style={{ color: "var(--color-gold)", opacity: 0.5 }}
     >
       :

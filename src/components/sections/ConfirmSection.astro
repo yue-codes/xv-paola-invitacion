@@ -10,31 +10,33 @@ import Confirm from "@components/sections/Confirm";
   <!-- Encabezado -->
   <div class="flex flex-col items-center text-center mb-12">
     <span
-      class="text-xs uppercase tracking-[0.3em] font-body mb-4"
+      class="reveal text-xs uppercase tracking-[0.3em] font-body mb-4"
       style="color: var(--color-accent); opacity: 0.85;"
     >
       tu presencia es nuestro regalo
     </span>
     <h2
-      class="font-display text-3xl sm:text-4xl font-light"
-      style="color: var(--color-text);"
+      class="reveal font-display text-3xl sm:text-4xl font-normal"
+      style="color: var(--color-text); transition-delay: 0.1s;"
     >
       Confirmación
     </h2>
     <div
-      class="h-px w-20 mt-5"
+      class="line-draw h-px w-20 mt-5"
       style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
     ></div>
     <p
-      class="mt-6 text-sm font-body font-light max-w-xs text-center leading-relaxed"
-      style="color: var(--color-text); opacity: 0.65;"
+      class="reveal mt-6 text-sm font-body font-normal max-w-xs text-center leading-relaxed"
+      style="color: var(--color-text); opacity: 0.65; transition-delay: 0.2s;"
     >
       Por favor confírmanos tu asistencia antes del <strong style="color: var(--color-gold); font-weight: 400;">15 de mayo de 2026</strong>.
     </p>
   </div>
 
   <!-- Formulario Preact -->
-  <Confirm client:visible />
+  <div class="reveal w-full" style="transition-delay: 0.3s;">
+    <Confirm client:visible />
+  </div>
 </section>
 
 <style>

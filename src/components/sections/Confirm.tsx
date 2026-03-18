@@ -2,16 +2,20 @@ import { useState } from "preact/hooks";
 
 // ─── Actualiza este número cuando el cliente lo confirme ────────────────────
 // Formato: código de país + número sin espacios ni guiones (ej. 521XXXXXXXXXX)
-const WHATSAPP_NUMBER = "521XXXXXXXXXX";
+const WHATSAPP_NUMBER = "522201298518";
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Attendance = "si" | "no" | "";
 
-function buildWhatsAppUrl(nombre: string, apellido: string, asiste: Attendance) {
+function buildWhatsAppUrl(
+  nombre: string,
+  apellido: string,
+  asiste: Attendance,
+) {
   const respuesta =
     asiste === "si"
-      ? `¡Hola! Soy *${nombre} ${apellido}* y confirmo que *Asistiré* con gusto a los XV años de Paola. 🎉`
-      : `Hola, soy *${nombre} ${apellido}*. Lamentablemente *No podré asistir* a los XV años de Paola, pero les mando un fuerte abrazo. 🌸`;
+      ? `¡Hola! Soy *${nombre} ${apellido}* y confirmo que *Asistiré* con gusto a los XV años de Paola.`
+      : `Hola, soy *${nombre} ${apellido}*. Lamentablemente *No podré asistir* a los XV años de Paola, pero les mando un fuerte abrazo.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(respuesta)}`;
 }
 
@@ -43,17 +47,23 @@ function RadioOption({ value, label, checked, onChange }: RadioOptionProps) {
         onChange={() => onChange(value)}
         class="sr-only"
       />
-      <span class="radio-dot" style={{ background: checked ? "var(--color-gold)" : "transparent", border: `1px solid ${checked ? "var(--color-gold)" : "var(--color-text)"}` }} />
-      <span class="text-sm font-body tracking-wide">{label}</span>
+      <span
+        class="radio-dot"
+        style={{
+          background: checked ? "var(--color-gold)" : "transparent",
+          border: `1px solid ${checked ? "var(--color-gold)" : "var(--color-text)"}`,
+        }}
+      />
+      <span class="font-body text-sm tracking-wide">{label}</span>
     </label>
   );
 }
 
 export default function Confirm() {
-  const [nombre, setNombre]     = useState("");
+  const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  const [asiste, setAsiste]     = useState<Attendance>("");
-  const [sent, setSent]         = useState(false);
+  const [asiste, setAsiste] = useState<Attendance>("");
+  const [sent, setSent] = useState(false);
 
   const isValid = nombre.trim() && apellido.trim() && asiste !== "";
 
@@ -69,24 +79,51 @@ export default function Confirm() {
     return (
       <div class="confirm-sent flex flex-col items-center gap-4 py-8 text-center">
         <div
-          class="rounded-full flex items-center justify-center"
-          style={{ width: 56, height: 56, background: "color-mix(in srgb, var(--color-gold) 15%, transparent)", border: "1px solid var(--color-gold)" }}
+          class="flex items-center justify-center rounded-full"
+          style={{
+            width: 56,
+            height: 56,
+            background:
+              "color-mix(in srgb, var(--color-gold) 15%, transparent)",
+            border: "1px solid var(--color-gold)",
+          }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--color-gold)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <p class="font-display text-2xl font-light" style={{ color: "var(--color-text)" }}>
+        <p
+          class="font-display text-2xl font-normal"
+          style={{ color: "var(--color-text)" }}
+        >
           ¡Gracias, {nombre}!
         </p>
-        <p class="text-sm font-body font-light" style={{ color: "var(--color-accent)", opacity: 0.85 }}>
+        <p
+          class="font-body text-sm font-normal"
+          style={{ color: "var(--color-accent)", opacity: 0.85 }}
+        >
           {asiste === "si"
             ? "¡Te esperamos con mucho cariño!"
             : "Gracias por hacernos saber, te mandamos un abrazo."}
         </p>
         <button
-          onClick={() => { setSent(false); setNombre(""); setApellido(""); setAsiste(""); }}
-          class="mt-2 text-xs uppercase tracking-widest font-body underline underline-offset-4"
+          onClick={() => {
+            setSent(false);
+            setNombre("");
+            setApellido("");
+            setAsiste("");
+          }}
+          class="font-body mt-2 text-xs tracking-widest uppercase underline underline-offset-4"
           style={{ color: "var(--color-gold)", opacity: 0.6 }}
         >
           Modificar respuesta
@@ -96,7 +133,10 @@ export default function Confirm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} class="confirm-form flex flex-col gap-5 w-full max-w-sm mx-auto">
+    <form
+      onSubmit={handleSubmit}
+      class="confirm-form mx-auto flex w-full max-w-sm flex-col gap-5"
+    >
       {/* Nombre */}
       <div class="field">
         <label class="field-label">Nombre</label>
@@ -127,8 +167,18 @@ export default function Confirm() {
       <div class="flex flex-col gap-2">
         <span class="field-label">¿Podrás acompañarnos?</span>
         <div class="flex gap-3">
-          <RadioOption value="si"  label="Asistiré"     checked={asiste === "si"}  onChange={setAsiste} />
-          <RadioOption value="no" label="No asistiré"  checked={asiste === "no"} onChange={setAsiste} />
+          <RadioOption
+            value="si"
+            label="Asistiré"
+            checked={asiste === "si"}
+            onChange={setAsiste}
+          />
+          <RadioOption
+            value="no"
+            label="No asistiré"
+            checked={asiste === "no"}
+            onChange={setAsiste}
+          />
         </div>
       </div>
 
@@ -136,7 +186,7 @@ export default function Confirm() {
       <button
         type="submit"
         disabled={!isValid}
-        class="confirm-btn mt-2 py-3 px-8 rounded-full text-sm uppercase tracking-[0.2em] font-body font-light transition-all"
+        class="confirm-btn font-body mt-2 rounded-full px-8 py-3 text-sm font-normal tracking-[0.2em] uppercase transition-all"
         style={{
           background: isValid ? "var(--color-gold)" : "transparent",
           color: isValid ? "var(--color-primary)" : "var(--color-gold)",
