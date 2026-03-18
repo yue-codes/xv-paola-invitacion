@@ -1,0 +1,86 @@
+---
+interface Person {
+  name: string;
+}
+
+interface FamilyGroup {
+  role: string;
+  people: Person[];
+}
+
+const groups: FamilyGroup[] = [
+  {
+    role: "Padres",
+    people: [
+      { name: "Concepción Tlalapango" },
+      { name: "Sergio Vázquez" },
+    ],
+  },
+  {
+    role: "Padrinos",
+    people: [
+      { name: "Isabel Alejandra Cerqueda" },
+      { name: "Francisco Cruz" },
+    ],
+  },
+];
+---
+
+<section
+  id="familia"
+  class="py-24 px-6"
+  style="background-color: var(--color-surface);"
+>
+  <!-- Encabezado -->
+  <div class="flex flex-col items-center text-center mb-16">
+    <span
+      class="text-xs uppercase tracking-[0.3em] font-body mb-4"
+      style="color: var(--color-accent); opacity: 0.85;"
+    >
+      quienes la acompañan
+    </span>
+    <h2
+      class="font-display text-3xl sm:text-4xl font-light"
+      style="color: var(--color-text);"
+    >
+      Familia &amp; Padrinos
+    </h2>
+    <div
+      class="h-px w-20 mt-5"
+      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+    ></div>
+  </div>
+
+  <!-- Grupos -->
+  <div class="flex flex-col items-center gap-14 max-w-lg mx-auto">
+    {
+      groups.map((group) => (
+        <div class="w-full flex flex-col items-center gap-6">
+          <!-- Etiqueta del grupo -->
+          <div class="flex items-center gap-3 w-full">
+            <div class="h-px flex-1" style="background: var(--color-gold); opacity: 0.25;" />
+            <span
+              class="text-xs uppercase tracking-[0.25em] font-body px-3"
+              style="color: var(--color-gold); opacity: 0.8;"
+            >
+              {group.role}
+            </span>
+            <div class="h-px flex-1" style="background: var(--color-gold); opacity: 0.25;" />
+          </div>
+
+          <!-- Personas -->
+          <div class="flex flex-col items-center gap-3 w-full">
+            {group.people.map((person) => (
+              <p
+                class="font-display text-xl sm:text-2xl font-light text-center"
+                style="color: var(--color-text);"
+              >
+                {person.name}
+              </p>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

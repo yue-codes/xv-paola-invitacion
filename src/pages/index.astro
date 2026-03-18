@@ -1,10 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from "@components/sections/Hero.astro";
+import Invitation from "@components/sections/Invitation.astro";
+import FamilySection from "@components/sections/FamilySection.astro";
+import Schedule from "@components/sections/Schedule.astro";
+import Gallery from "@components/sections/Gallery.astro";
+import ConfirmSection from "@components/sections/ConfirmSection.astro";
 ---
 
 <Layout>
-  <h1 class="text-7xl font-bold underline">Hello world!</h1>
+  <Hero />
+  <Invitation />
+  <FamilySection />
+  <Schedule />
+  <Gallery />
+  <ConfirmSection />
 </Layout>

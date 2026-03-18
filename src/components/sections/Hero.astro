@@ -1,0 +1,117 @@
+---
+import Countdown from "@components/ui/Countdown";
+---
+
+<section
+  id="hero"
+  class="relative h-svh min-h-[600px] flex flex-col items-center justify-center overflow-hidden"
+>
+  <!-- Imagen de fondo fija -->
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-fixed"
+    style="background-image: url('/hero.jpg');"
+    aria-hidden="true"
+  >
+    <!-- Overlay degradado -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, var(--color-overlay) 0%, #0d102280 60%, var(--color-primary) 100%);"
+    ></div>
+  </div>
+
+  <!-- Contenido centrado -->
+  <div class="relative z-10 flex flex-col items-center text-center px-6 gap-6">
+    <!-- Detalle decorativo superior -->
+    <div class="flex items-center gap-3 mb-2">
+      <div class="h-px w-12" style="background: var(--color-gold); opacity: 0.6;"></div>
+      <span
+        class="text-xs uppercase tracking-[0.3em] font-body"
+        style="color: var(--color-accent);"
+      >
+        mis xv años
+      </span>
+      <div class="h-px w-12" style="background: var(--color-gold); opacity: 0.6;"></div>
+    </div>
+
+    <!-- Nombre animado -->
+    <h1
+      class="hero-name text-5xl sm:text-6xl md:text-7xl font-display font-light leading-tight"
+      style="color: var(--color-text);"
+    >
+      Paola
+      <br />
+      <span
+        class="text-3xl sm:text-4xl md:text-5xl font-display italic font-light"
+        style="color: var(--color-gold);"
+      >
+        Vázquez Tlalapango
+      </span>
+    </h1>
+
+    <!-- Fecha -->
+    <p
+      class="text-sm uppercase tracking-[0.25em] font-body font-light"
+      style="color: var(--color-accent); opacity: 0.9;"
+    >
+      22 · mayo · 2026
+    </p>
+
+    <!-- Divider dorado -->
+    <div
+      class="h-px w-24"
+      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+    ></div>
+
+    <!-- Countdown -->
+    <Countdown client:load />
+  </div>
+
+  <!-- Scroll indicator -->
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+    aria-hidden="true"
+  >
+    <span
+      class="text-[10px] uppercase tracking-widest font-body"
+      style="color: var(--color-accent); opacity: 0.6;"
+    >
+      scroll
+    </span>
+    <div class="scroll-arrow" style="border-color: var(--color-gold);"></div>
+  </div>
+</section>
+
+<style>
+  /* Animación de entrada del nombre */
+  .hero-name {
+    animation: fadeUp 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Flecha de scroll animada */
+  .scroll-arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    transform: rotate(45deg);
+    animation: bounce 1.6s ease-in-out infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.7; }
+    50%       { transform: rotate(45deg) translateY(5px); opacity: 1; }
+  }
+</style>

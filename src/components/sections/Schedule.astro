@@ -1,0 +1,211 @@
+---
+import ParallaxImage from "@components/ui/ParallaxImage";
+
+// ─── Actualiza estos links cuando el cliente los confirme ───────────────────
+const MAPS_MISA      = "https://maps.google.com/?q=Parroquia+Espiritu+Santo+Santa+Maria+Guadalupe+Ecatepec";
+const MAPS_RECEPCION = "https://maps.google.com/?q=Salon+Royal+Rizzo+Kristal+Ecatepec";
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface Event {
+  id:        string;
+  icon:      string;
+  label:     string;
+  title:     string;
+  date:      string;
+  time:      string;
+  location:  string;
+  city:      string;
+  mapsUrl:   string;
+  image:     string;
+}
+
+const events: Event[] = [
+  {
+    id:       "misa",
+    icon:     "✦",
+    label:    "Misa de XV Años",
+    title:    "Parroquia del Espíritu Santo\ny Santa María Guadalupe",
+    date:     "22 de mayo, 2026",
+    time:     "20:00 hrs",
+    location: "Parroquia del Espíritu Santo y Santa María Guadalupe",
+    city:     "Ecatepec, Estado de México",
+    mapsUrl:  MAPS_MISA,
+    image:    "/parroquia1.png",
+  },
+  {
+    id:       "recepcion",
+    icon:     "✦",
+    label:    "Recepción",
+    title:    "Salón Royal Rizzo Kristal",
+    date:     "22 de mayo, 2026",
+    time:     "21:00 hrs",
+    location: "Salón Royal Rizzo Kristal",
+    city:     "Ecatepec, Estado de México",
+    mapsUrl:  MAPS_RECEPCION,
+    image:    "/salon.jpg",
+  },
+];
+---
+
+<section
+  id="cuando"
+  class="py-24 px-6"
+  style="background-color: var(--color-primary);"
+>
+  <!-- Encabezado -->
+  <div class="flex flex-col items-center text-center mb-16">
+    <span
+      class="text-xs uppercase tracking-[0.3em] font-body mb-4"
+      style="color: var(--color-accent); opacity: 0.85;"
+    >
+      te esperamos
+    </span>
+    <h2
+      class="font-display text-3xl sm:text-4xl font-light"
+      style="color: var(--color-text);"
+    >
+      Dónde &amp; Cuándo
+    </h2>
+    <div
+      class="h-px w-20 mt-5"
+      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+    ></div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="relative max-w-lg mx-auto">
+
+    <!-- Línea vertical central (visible en md+, en móvil va a la izquierda) -->
+    <div
+      class="timeline-line absolute top-0 bottom-0"
+      aria-hidden="true"
+      style="background: linear-gradient(to bottom, transparent, var(--color-gold), transparent); opacity: 0.3; width: 1px;"
+    ></div>
+
+    <!-- Eventos -->
+    <div class="flex flex-col gap-16">
+      {
+        events.map((ev, i) => (
+          <div class={`timeline-item flex gap-6 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse md:flex-row"}`}>
+
+            <!-- Punto en la línea -->
+            <div class="timeline-dot-col flex flex-col items-center">
+              <div
+                class="timeline-dot rounded-full flex-shrink-0"
+                style="width:12px; height:12px; background: var(--color-gold); box-shadow: 0 0 8px var(--color-gold); margin-top: 8px;"
+              />
+            </div>
+
+            <!-- Tarjeta -->
+            <div
+              class="event-card flex-1 rounded-xl overflow-hidden"
+              style="background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-gold) 20%, transparent);"
+            >
+              <!-- Imagen con parallax -->
+              <ParallaxImage
+                client:visible
+                src={ev.image}
+                alt={ev.location}
+                height="180px"
+                speed={0.25}
+              >
+                <!-- Overlay sobre imagen -->
+                <div
+                  class="absolute inset-0 flex items-end p-4"
+                  style="background: linear-gradient(to top, var(--color-primary) 0%, transparent 60%);"
+                >
+                  <span
+                    class="text-xs uppercase tracking-[0.25em] font-body"
+                    style="color: var(--color-accent); opacity: 0.9;"
+                  >
+                    {ev.label}
+                  </span>
+                </div>
+              </ParallaxImage>
+
+              <!-- Info -->
+              <div class="p-5 flex flex-col gap-3">
+                <h3
+                  class="font-display text-xl font-light leading-snug"
+                  style="color: var(--color-text); white-space: pre-line;"
+                >
+                  {ev.title}
+                </h3>
+
+                <!-- Fecha y hora -->
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
+                    <span
+                      class="text-sm font-body font-light"
+                      style="color: var(--color-text); opacity: 0.8;"
+                    >
+                      {ev.date}
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
+                    <span
+                      class="text-sm font-body font-light"
+                      style="color: var(--color-text); opacity: 0.8;"
+                    >
+                      {ev.time}
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
+                    <span
+                      class="text-sm font-body font-light"
+                      style="color: var(--color-text); opacity: 0.8;"
+                    >
+                      {ev.city}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Botón mapa -->
+                <a
+                  href={ev.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-full text-xs uppercase tracking-widest font-body transition-opacity hover:opacity-80 active:opacity-70"
+                  style="border: 1px solid var(--color-gold); color: var(--color-gold);"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  Ver en mapa
+                </a>
+              </div>
+            </div>
+
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Línea timeline: centrada en md, izquierda en móvil */
+  .timeline-line {
+    left: 5px;
+  }
+
+  @media (min-width: 640px) {
+    .timeline-line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .timeline-dot-col {
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  /* En el ParallaxImage el overlay necesita position absolute */
+  .event-card :global(.absolute) {
+    position: absolute;
+  }
+</style>

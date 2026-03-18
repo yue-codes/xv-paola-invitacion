@@ -1,0 +1,152 @@
+import { useState } from "preact/hooks";
+
+// ─── Actualiza este número cuando el cliente lo confirme ────────────────────
+// Formato: código de país + número sin espacios ni guiones (ej. 521XXXXXXXXXX)
+const WHATSAPP_NUMBER = "521XXXXXXXXXX";
+// ─────────────────────────────────────────────────────────────────────────────
+
+type Attendance = "si" | "no" | "";
+
+function buildWhatsAppUrl(nombre: string, apellido: string, asiste: Attendance) {
+  const respuesta =
+    asiste === "si"
+      ? `¡Hola! Soy *${nombre} ${apellido}* y confirmo que *Asistiré* con gusto a los XV años de Paola. 🎉`
+      : `Hola, soy *${nombre} ${apellido}*. Lamentablemente *No podré asistir* a los XV años de Paola, pero les mando un fuerte abrazo. 🌸`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(respuesta)}`;
+}
+
+interface RadioOptionProps {
+  value: Attendance;
+  label: string;
+  checked: boolean;
+  onChange: (v: Attendance) => void;
+}
+
+function RadioOption({ value, label, checked, onChange }: RadioOptionProps) {
+  return (
+    <label
+      class="radio-option"
+      style={{
+        border: `1px solid ${checked ? "var(--color-gold)" : "color-mix(in srgb, var(--color-gold) 25%, transparent)"}`,
+        background: checked
+          ? "color-mix(in srgb, var(--color-gold) 12%, transparent)"
+          : "transparent",
+        color: checked ? "var(--color-gold)" : "var(--color-text)",
+        opacity: checked ? 1 : 0.65,
+      }}
+    >
+      <input
+        type="radio"
+        name="asistencia"
+        value={value}
+        checked={checked}
+        onChange={() => onChange(value)}
+        class="sr-only"
+      />
+      <span class="radio-dot" style={{ background: checked ? "var(--color-gold)" : "transparent", border: `1px solid ${checked ? "var(--color-gold)" : "var(--color-text)"}` }} />
+      <span class="text-sm font-body tracking-wide">{label}</span>
+    </label>
+  );
+}
+
+export default function Confirm() {
+  const [nombre, setNombre]     = useState("");
+  const [apellido, setApellido] = useState("");
+  const [asiste, setAsiste]     = useState<Attendance>("");
+  const [sent, setSent]         = useState(false);
+
+  const isValid = nombre.trim() && apellido.trim() && asiste !== "";
+
+  const handleSubmit = (e: Event) => {
+    e.preventDefault();
+    if (!isValid) return;
+    setSent(true);
+    const url = buildWhatsAppUrl(nombre.trim(), apellido.trim(), asiste);
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  if (sent) {
+    return (
+      <div class="confirm-sent flex flex-col items-center gap-4 py-8 text-center">
+        <div
+          class="rounded-full flex items-center justify-center"
+          style={{ width: 56, height: 56, background: "color-mix(in srgb, var(--color-gold) 15%, transparent)", border: "1px solid var(--color-gold)" }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <p class="font-display text-2xl font-light" style={{ color: "var(--color-text)" }}>
+          ¡Gracias, {nombre}!
+        </p>
+        <p class="text-sm font-body font-light" style={{ color: "var(--color-accent)", opacity: 0.85 }}>
+          {asiste === "si"
+            ? "¡Te esperamos con mucho cariño!"
+            : "Gracias por hacernos saber, te mandamos un abrazo."}
+        </p>
+        <button
+          onClick={() => { setSent(false); setNombre(""); setApellido(""); setAsiste(""); }}
+          class="mt-2 text-xs uppercase tracking-widest font-body underline underline-offset-4"
+          style={{ color: "var(--color-gold)", opacity: 0.6 }}
+        >
+          Modificar respuesta
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} class="confirm-form flex flex-col gap-5 w-full max-w-sm mx-auto">
+      {/* Nombre */}
+      <div class="field">
+        <label class="field-label">Nombre</label>
+        <input
+          type="text"
+          value={nombre}
+          onInput={(e) => setNombre((e.target as HTMLInputElement).value)}
+          placeholder="Tu nombre"
+          autocomplete="given-name"
+          class="field-input"
+        />
+      </div>
+
+      {/* Apellido */}
+      <div class="field">
+        <label class="field-label">Apellido</label>
+        <input
+          type="text"
+          value={apellido}
+          onInput={(e) => setApellido((e.target as HTMLInputElement).value)}
+          placeholder="Tu apellido"
+          autocomplete="family-name"
+          class="field-input"
+        />
+      </div>
+
+      {/* Radio asistencia */}
+      <div class="flex flex-col gap-2">
+        <span class="field-label">¿Podrás acompañarnos?</span>
+        <div class="flex gap-3">
+          <RadioOption value="si"  label="Asistiré"     checked={asiste === "si"}  onChange={setAsiste} />
+          <RadioOption value="no" label="No asistiré"  checked={asiste === "no"} onChange={setAsiste} />
+        </div>
+      </div>
+
+      {/* Botón */}
+      <button
+        type="submit"
+        disabled={!isValid}
+        class="confirm-btn mt-2 py-3 px-8 rounded-full text-sm uppercase tracking-[0.2em] font-body font-light transition-all"
+        style={{
+          background: isValid ? "var(--color-gold)" : "transparent",
+          color: isValid ? "var(--color-primary)" : "var(--color-gold)",
+          border: "1px solid var(--color-gold)",
+          opacity: isValid ? 1 : 0.45,
+          cursor: isValid ? "pointer" : "not-allowed",
+        }}
+      >
+        Confirmar por WhatsApp
+      </button>
+    </form>
+  );
+}

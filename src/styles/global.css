@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+/* =============================================
+   PALETA DE COLOR — Midnight Blush
+   Cambiar aquí para actualizar todo el sitio
+   ============================================= */
+@theme {
+  /* Colores principales */
+  --color-primary: #1a1f3c;
+  --color-accent: #e8b4b8;
+  --color-gold: #d4af87;
+  --color-bg-soft: #fdfaf6;
+  --color-text: #f5f5f5;
+  --color-text-dark: #1a1a1a;
+
+  /* Superficies / capas */
+  --color-surface: #242946;
+  --color-surface-2: #2e3457;
+  --color-overlay: #0d1022cc; /* negro azulado 80% opacidad */
+
+  /* Tipografía */
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Lato", "Helvetica Neue", sans-serif;
+}
+
+/* =============================================
+   FUENTES (Google Fonts via CSS import)
+   ============================================= */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap");
+
+/* =============================================
+   BASE
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings usan la fuente display */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}

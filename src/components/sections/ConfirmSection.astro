@@ -1,0 +1,98 @@
+---
+import Confirm from "@components/sections/Confirm";
+---
+
+<section
+  id="confirmar"
+  class="py-24 px-6 flex flex-col items-center"
+  style="background-color: var(--color-primary);"
+>
+  <!-- Encabezado -->
+  <div class="flex flex-col items-center text-center mb-12">
+    <span
+      class="text-xs uppercase tracking-[0.3em] font-body mb-4"
+      style="color: var(--color-accent); opacity: 0.85;"
+    >
+      tu presencia es nuestro regalo
+    </span>
+    <h2
+      class="font-display text-3xl sm:text-4xl font-light"
+      style="color: var(--color-text);"
+    >
+      Confirmación
+    </h2>
+    <div
+      class="h-px w-20 mt-5"
+      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+    ></div>
+    <p
+      class="mt-6 text-sm font-body font-light max-w-xs text-center leading-relaxed"
+      style="color: var(--color-text); opacity: 0.65;"
+    >
+      Por favor confírmanos tu asistencia antes del <strong style="color: var(--color-gold); font-weight: 400;">15 de mayo de 2026</strong>.
+    </p>
+  </div>
+
+  <!-- Formulario Preact -->
+  <Confirm client:visible />
+</section>
+
+<style>
+  :global(.field) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  :global(.field-label) {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: var(--font-body);
+    color: var(--color-accent);
+    opacity: 0.8;
+  }
+
+  :global(.field-input) {
+    background: color-mix(in srgb, var(--color-gold) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-gold) 25%, transparent);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--color-text);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  :global(.field-input::placeholder) {
+    color: var(--color-text);
+    opacity: 0.3;
+  }
+
+  :global(.field-input:focus) {
+    border-color: var(--color-gold);
+  }
+
+  :global(.radio-option) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  :global(.radio-dot) {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+</style>
