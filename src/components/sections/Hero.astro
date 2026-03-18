@@ -4,44 +4,53 @@ import Countdown from "@components/ui/Countdown";
 
 <section
   id="hero"
-  class="relative h-svh min-h-[600px] flex flex-col items-center justify-center overflow-hidden"
+  class="relative flex h-svh min-h-[600px] flex-col items-center justify-center overflow-hidden"
 >
   <!-- Imagen de fondo fija -->
   <div
-    class="absolute inset-0 bg-cover bg-center bg-fixed"
-    style="background-image: url('/hero.jpg');"
+    class="absolute inset-0 bg-cover bg-fixed bg-center"
+    style="background-image: url('/hero.webp');"
     aria-hidden="true"
   >
     <!-- Overlay degradado -->
     <div
       class="absolute inset-0"
       style="background: linear-gradient(to bottom, var(--color-overlay) 0%, #0d102280 60%, var(--color-primary) 100%);"
-    ></div>
+    >
+    </div>
   </div>
 
   <!-- Contenido centrado -->
-  <div class="relative z-10 flex flex-col items-center text-center px-6 gap-6">
+  <div class="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
     <!-- Detalle decorativo superior -->
-    <div class="flex items-center gap-3 mb-2">
-      <div class="h-px w-12" style="background: var(--color-gold); opacity: 0.6;"></div>
+    <div class="mb-2 flex items-center gap-3">
+      <div
+        class="h-px w-12"
+        style="background: var(--color-gold); opacity: 0.6;"
+      >
+      </div>
       <span
-        class="text-xs uppercase tracking-[0.3em] font-body"
+        class="font-body text-xs tracking-[0.3em] uppercase"
         style="color: var(--color-accent);"
       >
         mis xv años
       </span>
-      <div class="h-px w-12" style="background: var(--color-gold); opacity: 0.6;"></div>
+      <div
+        class="h-px w-12"
+        style="background: var(--color-gold); opacity: 0.6;"
+      >
+      </div>
     </div>
 
     <!-- Nombre animado -->
     <h1
-      class="hero-name text-5xl sm:text-6xl md:text-7xl font-display font-normal leading-tight"
+      class="hero-name font-display text-5xl leading-tight font-normal sm:text-6xl md:text-7xl"
       style="color: var(--color-text);"
     >
       Paola
       <br />
       <span
-        class="text-3xl sm:text-4xl md:text-5xl font-display italic font-normal"
+        class="font-display text-3xl font-normal italic sm:text-4xl md:text-5xl"
         style="color: var(--color-gold);"
       >
         Vázquez Tlalapango
@@ -50,7 +59,7 @@ import Countdown from "@components/ui/Countdown";
 
     <!-- Fecha -->
     <p
-      class="text-sm uppercase tracking-[0.25em] font-body font-normal"
+      class="font-body text-sm font-normal tracking-[0.25em] uppercase"
       style="color: var(--color-accent); opacity: 0.9;"
     >
       22 · mayo · 2026
@@ -60,7 +69,8 @@ import Countdown from "@components/ui/Countdown";
     <div
       class="h-px w-24"
       style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
-    ></div>
+    >
+    </div>
 
     <!-- Countdown -->
     <Countdown client:load />
@@ -69,11 +79,11 @@ import Countdown from "@components/ui/Countdown";
   <!-- Scroll indicator -->
   <a
     href="#invitacion"
-    class="scroll-btn absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+    class="scroll-btn absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
     aria-label="Ver invitación"
   >
     <span
-      class="text-[10px] uppercase tracking-widest font-body"
+      class="font-body text-[10px] tracking-widest uppercase"
       style="color: var(--color-accent); opacity: 0.6;"
     >
       invitación
@@ -123,7 +133,14 @@ import Countdown from "@components/ui/Countdown";
   }
 
   @keyframes bounce {
-    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.7; }
-    50%       { transform: rotate(45deg) translateY(5px); opacity: 1; }
+    0%,
+    100% {
+      transform: rotate(45deg) translateY(0);
+      opacity: 0.7;
+    }
+    50% {
+      transform: rotate(45deg) translateY(5px);
+      opacity: 1;
+    }
   }
 </style>

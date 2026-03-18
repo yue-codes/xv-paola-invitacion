@@ -28,7 +28,7 @@ const groups: FamilyGroup[] = [
 
 <section
   id="familia"
-  class="py-24 px-6"
+  class="min-h-svh px-6 flex flex-col justify-center"
   style="background-color: var(--color-surface);"
 >
   <!-- Encabezado -->
@@ -52,7 +52,7 @@ const groups: FamilyGroup[] = [
   </div>
 
   <!-- Grupos -->
-  <div class="flex flex-col items-center gap-14 max-w-lg mx-auto">
+  <div class="flex flex-col items-center gap-14 w-full">
     {
       groups.map((group) => (
         <div class="w-full flex flex-col items-center gap-6">
