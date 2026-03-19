@@ -21,6 +21,7 @@
   /* Tipografía */
   --font-display: "Cormorant Garamond", "Georgia", serif;
   --font-body: "Lato", "Helvetica Neue", sans-serif;
+  --font-paola: "Great Vibes", "Cursive";
 }
 
 /* =============================================
@@ -41,12 +42,14 @@ body {
 }
 
 /* Headings usan la fuente display */
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
 }
 
 /* =============================================
@@ -68,12 +71,24 @@ h4 {
 }
 
 /* B — Stagger: delays progresivos en hijos directos */
-.stagger > .reveal:nth-child(1) { transition-delay: 0.05s; }
-.stagger > .reveal:nth-child(2) { transition-delay: 0.15s; }
-.stagger > .reveal:nth-child(3) { transition-delay: 0.25s; }
-.stagger > .reveal:nth-child(4) { transition-delay: 0.35s; }
-.stagger > .reveal:nth-child(5) { transition-delay: 0.45s; }
-.stagger > .reveal:nth-child(6) { transition-delay: 0.55s; }
+.stagger > .reveal:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.stagger > .reveal:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.stagger > .reveal:nth-child(3) {
+  transition-delay: 0.25s;
+}
+.stagger > .reveal:nth-child(4) {
+  transition-delay: 0.35s;
+}
+.stagger > .reveal:nth-child(5) {
+  transition-delay: 0.45s;
+}
+.stagger > .reveal:nth-child(6) {
+  transition-delay: 0.55s;
+}
 
 /* C — Line draw: crece desde el centro */
 .line-draw {

@@ -14,6 +14,9 @@ importers:
       '@fontsource/cormorant-garamond':
         specifier: ^5.2.11
         version: 5.2.11
+      '@fontsource/great-vibes':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/lato':
         specifier: ^5.2.7
         version: 5.2.7
@@ -541,6 +544,9 @@ packages:
 
   '@fontsource/cormorant-garamond@5.2.11':
     resolution: {integrity: sha512-5JjpN023lhA5soijgVT0BdRGzmlijm402ppjccMd6h+vRE0mX2lJnE+41UPfnlidrkV9/rCo1mf58WZlHnB0CA==}
+
+  '@fontsource/great-vibes@5.2.8':
+    resolution: {integrity: sha512-/PATz436NGixjNaigierUpv50wfNv2UhAAijcCPkn4ynvl41x66TCLbXVSVfp4pth9gjWnGqgoj0lVIhHapAuw==}
 
   '@fontsource/lato@5.2.7':
     resolution: {integrity: sha512-k5mum1ADbDW5cTw1Ett1eQVWeoZ6gq0ct6SFBibEhB4LRxhniChJZTBgd6ph5yBxLkN1fcnsnmicBNA4S/3nbw==}
@@ -2643,6 +2649,8 @@ snapshots:
     optional: true
 
   '@fontsource/cormorant-garamond@5.2.11': {}
+
+  '@fontsource/great-vibes@5.2.8': {}
 
   '@fontsource/lato@5.2.7': {}
 

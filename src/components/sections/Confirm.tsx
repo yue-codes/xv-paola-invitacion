@@ -2,7 +2,7 @@ import { useState } from "preact/hooks";
 
 // ─── Actualiza este número cuando el cliente lo confirme ────────────────────
 // Formato: código de país + número sin espacios ni guiones (ej. 521XXXXXXXXXX)
-const WHATSAPP_NUMBER = "522201298518";
+const WHATSAPP_NUMBER = "525521524237";
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Attendance = "si" | "no" | "";
