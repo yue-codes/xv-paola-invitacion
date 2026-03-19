@@ -11,11 +11,16 @@ function buildWhatsAppUrl(
   nombre: string,
   apellido: string,
   asiste: Attendance,
+  total: number,
 ) {
-  const respuesta =
-    asiste === "si"
-      ? `¡Hola! Soy *${nombre} ${apellido}* y confirmo que *Asistiré* con gusto a los XV años de Paola.`
-      : `Hola, soy *${nombre} ${apellido}*. Lamentablemente *No podré asistir* a los XV años de Paola, pero les mando un fuerte abrazo.`;
+  let respuesta: string;
+  if (asiste === "si") {
+    const personas =
+      total === 1 ? "1 persona (solo yo)" : `${total} personas en total`;
+    respuesta = `¡Hola! Soy *${nombre} ${apellido}* y confirmo que *Asistiré* con gusto a los XV años de Paola. Seremos *${personas}*.`;
+  } else {
+    respuesta = `Hola, soy *${nombre} ${apellido}*. Lamentablemente *No podré asistir* a los XV años de Paola, pero les mando un fuerte abrazo.`;
+  }
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(respuesta)}`;
 }
 
@@ -63,7 +68,13 @@ export default function Confirm() {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [asiste, setAsiste] = useState<Attendance>("");
+  const [total, setTotal] = useState(1);
   const [sent, setSent] = useState(false);
+
+  const handleAsiste = (v: Attendance) => {
+    setAsiste(v);
+    if (v === "no") setTotal(1);
+  };
 
   const isValid = nombre.trim() && apellido.trim() && asiste !== "";
 
@@ -71,7 +82,7 @@ export default function Confirm() {
     e.preventDefault();
     if (!isValid) return;
     setSent(true);
-    const url = buildWhatsAppUrl(nombre.trim(), apellido.trim(), asiste);
+    const url = buildWhatsAppUrl(nombre.trim(), apellido.trim(), asiste, total);
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -122,6 +133,7 @@ export default function Confirm() {
             setNombre("");
             setApellido("");
             setAsiste("");
+            setTotal(1);
           }}
           class="font-body mt-2 text-xs tracking-widest uppercase underline underline-offset-4"
           style={{ color: "var(--color-gold)", opacity: 0.6 }}
@@ -171,16 +183,38 @@ export default function Confirm() {
             value="si"
             label="Asistiré"
             checked={asiste === "si"}
-            onChange={setAsiste}
+            onChange={handleAsiste}
           />
           <RadioOption
             value="no"
             label="No asistiré"
             checked={asiste === "no"}
-            onChange={setAsiste}
+            onChange={handleAsiste}
           />
         </div>
       </div>
+
+      {/* Total personas — solo visible si asiste */}
+      {asiste === "si" && (
+        <div class="field">
+          <label class="field-label">¿Cuántos serán en total?</label>
+          <input
+            type="number"
+            min={1}
+            max={10}
+            value={total}
+            onInput={(e) =>
+              setTotal(
+                Math.min(
+                  10,
+                  Math.max(1, Number((e.target as HTMLInputElement).value)),
+                ),
+              )
+            }
+            class="field-input"
+          />
+        </div>
+      )}
 
       {/* Botón */}
       <button
