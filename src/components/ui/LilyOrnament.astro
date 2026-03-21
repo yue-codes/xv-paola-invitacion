@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: number;
+  opacity?: number;
+}
+const { size = 24, opacity = 1 } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 40 40"
+  fill="var(--color-gold)"
+  aria-hidden="true"
+  style={`opacity: ${opacity}; flex-shrink: 0;`}
+>
+  <g transform="translate(20,20)">
+    <!-- 6 pétalos como elipses rotadas -->
+    <ellipse rx="3.5" ry="10" opacity="0.85" />
+    <ellipse rx="3.5" ry="10" transform="rotate(60)" opacity="0.85" />
+    <ellipse rx="3.5" ry="10" transform="rotate(120)" opacity="0.85" />
+    <ellipse rx="3.5" ry="10" transform="rotate(180)" opacity="0.85" />
+    <ellipse rx="3.5" ry="10" transform="rotate(240)" opacity="0.85" />
+    <ellipse rx="3.5" ry="10" transform="rotate(300)" opacity="0.85" />
+    <!-- Centro -->
+    <circle r="4.5" />
+  </g>
+</svg>
