@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 /* =============================================
-   PALETA DE COLOR — Midnight Blush
+   PALETA DE COLOR — Blanco, Rosa & Dorado
    Cambiar aquí para actualizar todo el sitio
    ============================================= */
 @theme {
   /* Colores principales */
-  --color-primary: #1a1f3c;
-  --color-accent: #e8b4b8;
-  --color-gold: #d4af87;
-  --color-bg-soft: #fdfaf6;
-  --color-text: #f5f5f5;
+  --color-primary: #fef6e4;
+  --color-accent: #c9506e;
+  --color-gold: #b8892e;
+  --color-bg-soft: #fff0f4;
+  --color-text: #b8860b;
   --color-text-dark: #1a1a1a;
 
   /* Superficies / capas */
-  --color-surface: #242946;
-  --color-surface-2: #2e3457;
-  --color-overlay: #0d1022cc; /* negro azulado 80% opacidad */
+  --color-surface: #f9dde5;
+  --color-surface-2: #f5d0de;
+  --color-overlay: #1a050acc; /* oscuro cálido para overlay del hero */
 
   /* Tipografía */
   --font-display: "Cormorant Garamond", "Georgia", serif;
@@ -29,7 +29,7 @@
    ============================================= */
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -50,6 +50,22 @@ body {
     font-family: var(--font-display);
     font-weight: 600;
   }
+}
+
+/* =============================================
+   TEXTURA DE PAPEL — SVG noise fijo sobre todo el sitio
+   Ajustar opacity para más/menos intensidad
+   ============================================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 /* =============================================
