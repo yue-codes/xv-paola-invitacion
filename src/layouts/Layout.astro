@@ -12,6 +12,7 @@ import "@fontsource/cormorant-garamond/400-italic.css";
 import "@fontsource/cormorant-garamond/600-italic.css";
 
 import ScrollProgress from "@components/ui/ScrollProgress";
+import SplashScreen from "@components/ui/SplashScreen";
 
 // ─── Metadatos para vista previa en WhatsApp / redes sociales ───────────────
 // Actualiza SITE_URL con el dominio real cuando se publique
@@ -29,7 +30,7 @@ const OG_IMAGE = `${SITE_URL}/fondopaola.png`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/jpeg" href="/paolalogo.jpg" />
-    <meta name="theme-color" content="#e6dfce" />
+    <meta name="theme-color" content="#F9E2E4" />
     <meta name="color-scheme" content="light" />
 
     <title>{OG_TITLE}</title>
@@ -53,6 +54,7 @@ const OG_IMAGE = `${SITE_URL}/fondopaola.png`;
     <meta name="twitter:image" content={OG_IMAGE} />
   </head>
   <body>
+    <SplashScreen client:load />
     <ScrollProgress client:load />
     <slot />
 
