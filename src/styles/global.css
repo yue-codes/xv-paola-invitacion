@@ -6,21 +6,21 @@
    ============================================= */
 @theme {
   /* Colores principales */
-  --color-primary: #fef6e4;
-  --color-accent: #c9506e;
-  --color-gold: #b8892e;
-  --color-bg-soft: #fff0f4;
-  --color-text: #b8860b;
+  --color-primary: rgba(255, 248, 248, 0.60);
+  --color-accent: #6b3d0a;
+  --color-gold: #c9a84c;
+  --color-bg-soft: rgba(255, 243, 243, 0.60);
+  --color-text: #3d2020;
   --color-text-dark: #1a1a1a;
 
   /* Superficies / capas */
-  --color-surface: #f9dde5;
-  --color-surface-2: #f5d0de;
-  --color-overlay: #1a050acc; /* oscuro cálido para overlay del hero */
+  --color-surface: rgba(255, 240, 240, 0.70);
+  --color-surface-2: rgba(250, 228, 228, 0.72);
+  --color-overlay: #1a0d05cc; /* oscuro cálido para overlay del hero */
 
   /* Tipografía */
-  --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-body: "Lato", "Helvetica Neue", sans-serif;
+  --font-display: "Great Vibes", "Cursive";
+  --font-body: "Cormorant Garamond", "Georgia", serif;
   --font-paola: "Great Vibes", "Cursive";
 }
 
@@ -33,7 +33,11 @@ html {
 }
 
 body {
-  background-color: var(--color-primary);
+  background-color: #f0ebe0;
+  background-image: url("/fondo.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
   color: var(--color-text);
   font-family: var(--font-body);
   font-weight: 400;
@@ -50,23 +54,6 @@ body {
     font-family: var(--font-display);
     font-weight: 600;
   }
-}
-
-/* =============================================
-   TEXTURA DE PAPEL — SVG noise fijo sobre todo el sitio
-   Ajustar opacity para más/menos intensidad
-   ============================================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9000;
-  opacity: 0.3;
-  mix-blend-mode: multiply;
-  background-image: url("/texture.jpg");
-  background-repeat: repeat;
-  background-size: 300px 300px;
 }
 
 /* =============================================

@@ -1,6 +1,8 @@
 ---
 import ParallaxImage from "@components/ui/ParallaxImage";
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
+import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
+import RoseOrnament from "@components/ui/RoseOrnament.astro";
 
 // ─── Actualiza estos links cuando el cliente los confirme ───────────────────
 const MAPS_MISA      = "https://maps.google.com/?q=Parroquia+Espiritu+Santo+Santa+Maria+Guadalupe+Ecatepec";
@@ -57,20 +59,20 @@ const events: Event[] = [
   <div class="flex flex-col items-center text-center mb-16">
     <div class="reveal flex items-center gap-2 mb-6">
       <div class="h-px w-8" style="background: linear-gradient(to right, transparent, var(--color-gold)); opacity: 0.4;"></div>
-      <LilyOrnament size={13} opacity={0.5} />
+      <FlowerOrnament size={13} opacity={0.5} />
       <LilyOrnament size={21} opacity={0.75} />
-      <LilyOrnament size={13} opacity={0.5} />
+      <FlowerOrnament size={13} opacity={0.5} />
       <div class="h-px w-8" style="background: linear-gradient(to left, transparent, var(--color-gold)); opacity: 0.4;"></div>
     </div>
     <div
       class="reveal flex items-center gap-2 mb-4"
       style="transition-delay: 0.05s;"
     >
-      <LilyOrnament size={11} opacity={0.5} />
+      <RoseOrnament size={11} opacity={0.5} />
       <span class="text-xs uppercase tracking-[0.3em] font-body" style="color: var(--color-accent); opacity: 0.85;">
         te esperamos
       </span>
-      <LilyOrnament size={11} opacity={0.5} />
+      <RoseOrnament size={11} opacity={0.5} />
     </div>
     <h2
       class="reveal font-display text-3xl sm:text-4xl font-normal"
@@ -124,11 +126,11 @@ const events: Event[] = [
                 <!-- Overlay sobre imagen -->
                 <div
                   class="absolute inset-0 flex items-end p-4"
-                  style="background: linear-gradient(to top, var(--color-primary) 0%, transparent 60%);"
+                  style="background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 70%);"
                 >
                   <span
-                    class="text-xs uppercase tracking-[0.25em] font-body"
-                    style="color: var(--color-accent); opacity: 0.9;"
+                    class="text-xs uppercase tracking-[0.25em] font-body font-bold"
+                    style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 4px rgba(0,0,0,0.5);"
                   >
                     {ev.label}
                   </span>
@@ -138,8 +140,8 @@ const events: Event[] = [
               <!-- Info -->
               <div class="p-5 flex flex-col gap-3">
                 <h3
-                  class="font-display text-xl font-semibold leading-snug"
-                  style="color: var(--color-text); white-space: pre-line;"
+                  class="font-display text-xl font-normal leading-snug"
+                  style="color: var(--color-text-dark); white-space: pre-line;"
                 >
                   {ev.title}
                 </h3>
@@ -149,8 +151,8 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-normal"
-                      style="color: var(--color-text); opacity: 0.8;"
+                      class="text-sm font-body font-bold"
+                      style="color: var(--color-text-dark);"
                     >
                       {ev.date}
                     </span>
@@ -158,8 +160,8 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-normal"
-                      style="color: var(--color-text); opacity: 0.8;"
+                      class="text-sm font-body font-bold"
+                      style="color: var(--color-text-dark);"
                     >
                       {ev.time}
                     </span>
@@ -167,8 +169,8 @@ const events: Event[] = [
                   <div class="flex items-center gap-2">
                     <span style="color: var(--color-gold); font-size: 0.65rem;">◆</span>
                     <span
-                      class="text-sm font-body font-normal"
-                      style="color: var(--color-text); opacity: 0.8;"
+                      class="text-sm font-body font-bold"
+                      style="color: var(--color-text-dark);"
                     >
                       {ev.city}
                     </span>
@@ -181,7 +183,7 @@ const events: Event[] = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class="mt-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-full text-xs uppercase tracking-widest font-body transition-opacity hover:opacity-80 active:opacity-70"
-                  style="border: 1px solid var(--color-gold); color: var(--color-gold);"
+                  style="border: 2px solid var(--color-gold); color: var(--color-gold); font-weight: 700;"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>

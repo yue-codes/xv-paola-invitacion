@@ -1,6 +1,8 @@
 ---
 import Confirm from "@components/sections/Confirm";
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
+import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
+import RoseOrnament from "@components/ui/RoseOrnament.astro";
 ---
 
 <section
@@ -12,23 +14,23 @@ import LilyOrnament from "@components/ui/LilyOrnament.astro";
   <div class="mb-12 flex flex-col items-center text-center">
     <div class="reveal flex items-center gap-2 mb-6">
       <div class="h-px w-8" style="background: linear-gradient(to right, transparent, var(--color-gold)); opacity: 0.4;"></div>
-      <LilyOrnament size={13} opacity={0.5} />
+      <FlowerOrnament size={13} opacity={0.5} />
       <LilyOrnament size={21} opacity={0.75} />
-      <LilyOrnament size={13} opacity={0.5} />
+      <FlowerOrnament size={13} opacity={0.5} />
       <div class="h-px w-8" style="background: linear-gradient(to left, transparent, var(--color-gold)); opacity: 0.4;"></div>
     </div>
     <div
       class="reveal flex items-center gap-2 mb-4"
       style="transition-delay: 0.05s;"
     >
-      <LilyOrnament size={11} opacity={0.5} />
+      <RoseOrnament size={11} opacity={0.5} />
       <span
         class="font-body text-xs tracking-[0.3em] uppercase"
-        style="color: var(--color-accent); opacity: 0.85;"
+        style="color: var(--color-accent);"
       >
         tu presencia es nuestro regalo
       </span>
-      <LilyOrnament size={11} opacity={0.5} />
+      <RoseOrnament size={11} opacity={0.5} />
     </div>
     <h2
       class="reveal font-display text-3xl font-normal sm:text-4xl"
@@ -43,7 +45,7 @@ import LilyOrnament from "@components/ui/LilyOrnament.astro";
     </div>
     <p
       class="reveal font-body mt-6 max-w-xs text-center text-sm leading-relaxed font-normal"
-      style="color: var(--color-text); opacity: 0.65; transition-delay: 0.2s;"
+      style="color: var(--color-text); transition-delay: 0.2s;"
     >
       Por favor confírmanos tu asistencia antes del <strong
         style="color: var(--color-gold); font-weight: 400;"
@@ -66,12 +68,12 @@ import LilyOrnament from "@components/ui/LilyOrnament.astro";
   }
 
   :global(.field-label) {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-family: var(--font-body);
+    font-weight: 600;
     color: var(--color-accent);
-    opacity: 0.8;
   }
 
   :global(.field-input) {

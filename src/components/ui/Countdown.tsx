@@ -34,13 +34,13 @@ function Unit({ value, label }: UnitProps) {
     <div class="flex flex-col items-center gap-1">
       <span
         class="text-4xl md:text-5xl font-display font-normal tabular-nums"
-        style={{ color: "var(--color-gold)" }}
+        style={{ color: "#e8c870", textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}
       >
         {pad(value)}
       </span>
       <span
         class="text-xs uppercase tracking-widest font-body"
-        style={{ color: "var(--color-accent)", opacity: 0.85 }}
+        style={{ color: "rgba(255,255,255,0.78)", textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
       >
         {label}
       </span>
@@ -52,7 +52,7 @@ function Separator() {
   return (
     <span
       class="text-3xl font-normal pb-4 select-none"
-      style={{ color: "var(--color-gold)", opacity: 0.5 }}
+      style={{ color: "#e8c870", opacity: 0.5 }}
     >
       :
     </span>

@@ -1,0 +1,93 @@
+---
+import LilyOrnament from "@components/ui/LilyOrnament.astro";
+import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
+import RoseOrnament from "@components/ui/RoseOrnament.astro";
+---
+
+<section
+  id="regalos"
+  class="py-24 px-6"
+  style="background-color: var(--color-primary);"
+>
+  <div class="flex flex-col items-center text-center max-w-md mx-auto">
+
+    <!-- Ornamento superior -->
+    <div class="reveal flex items-center gap-2 mb-6">
+      <div class="h-px w-8" style="background: linear-gradient(to right, transparent, var(--color-gold)); opacity: 0.4;"></div>
+      <FlowerOrnament size={13} opacity={0.5} />
+      <LilyOrnament size={21} opacity={0.75} />
+      <FlowerOrnament size={13} opacity={0.5} />
+      <div class="h-px w-8" style="background: linear-gradient(to left, transparent, var(--color-gold)); opacity: 0.4;"></div>
+    </div>
+
+    <!-- Etiqueta -->
+    <div class="reveal flex items-center gap-2 mb-4" style="transition-delay: 0.05s;">
+      <RoseOrnament size={11} opacity={0.5} />
+      <span
+        class="text-xs uppercase tracking-[0.3em] font-body"
+        style="color: var(--color-accent); opacity: 0.85;"
+      >
+        mesa de regalos
+      </span>
+      <RoseOrnament size={11} opacity={0.5} />
+    </div>
+
+    <!-- Título -->
+    <h2
+      class="reveal font-display text-3xl sm:text-4xl font-normal mb-4"
+      style="color: var(--color-text); transition-delay: 0.1s;"
+    >
+      Regalos
+    </h2>
+
+    <div class="line-draw h-px w-20 mb-10" style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"></div>
+
+    <!-- Ícono -->
+    <div class="reveal mb-8" style="transition-delay: 0.15s;">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="color: var(--color-gold); opacity: 0.7;"
+        aria-hidden="true"
+      >
+        <!-- Caja de regalo -->
+        <rect x="3" y="8" width="18" height="14" rx="1" />
+        <path d="M3 12h18" />
+        <path d="M12 8V22" />
+        <!-- Lazo -->
+        <path d="M12 8c0 0 -3 -5 -5 -3s0 3 5 3z" />
+        <path d="M12 8c0 0 3 -5 5 -3s0 3 -5 3z" />
+        <rect x="10" y="4" width="4" height="4" rx="1" />
+      </svg>
+    </div>
+
+    <!-- Texto principal -->
+    <p
+      class="reveal font-body text-lg leading-relaxed mb-6"
+      style="color: var(--color-text); transition-delay: 0.2s;"
+    >
+      Para nosotros el mejor regalo es
+      <em style="color: var(--color-gold); font-style: italic;">tu compañía.</em>
+    </p>
+
+    <!-- Divider -->
+    <div class="reveal h-px w-12 mb-6" style="background: var(--color-gold); opacity: 0.3; transition-delay: 0.25s;"></div>
+
+    <!-- Texto secundario -->
+    <p
+      class="reveal font-body text-sm leading-relaxed"
+      style="color: var(--color-text); opacity: 0.75; transition-delay: 0.3s;"
+    >
+      Pero si deseas brindarme un obsequio sorpresa o efectivo,
+      colocaremos un <em style="font-style: italic;">buzón</em> en la recepción del salón,
+      donde podrás depositar tus mejores deseos.
+    </p>
+
+  </div>
+</section>

@@ -41,7 +41,6 @@ function RadioOption({ value, label, checked, onChange }: RadioOptionProps) {
           ? "color-mix(in srgb, var(--color-gold) 12%, transparent)"
           : "transparent",
         color: checked ? "var(--color-gold)" : "var(--color-text)",
-        opacity: checked ? 1 : 0.65,
       }}
     >
       <input
@@ -59,7 +58,7 @@ function RadioOption({ value, label, checked, onChange }: RadioOptionProps) {
           border: `1px solid ${checked ? "var(--color-gold)" : "var(--color-text)"}`,
         }}
       />
-      <span class="font-body text-sm tracking-wide">{label}</span>
+      <span class="font-body text-sm font-semibold tracking-wide">{label}</span>
     </label>
   );
 }
@@ -115,13 +114,13 @@ export default function Confirm() {
         </div>
         <p
           class="font-display text-2xl font-normal"
-          style={{ color: "var(--color-text)" }}
+          style={{ color: "var(--color-text)", fontWeight: 600 }}
         >
           ¡Gracias, {nombre}!
         </p>
         <p
           class="font-body text-sm font-normal"
-          style={{ color: "var(--color-accent)", opacity: 0.85 }}
+          style={{ color: "var(--color-accent)", fontWeight: 600 }}
         >
           {asiste === "si"
             ? "¡Te esperamos con mucho cariño!"
@@ -136,7 +135,7 @@ export default function Confirm() {
             setTotal(1);
           }}
           class="font-body mt-2 text-xs tracking-widest uppercase underline underline-offset-4"
-          style={{ color: "var(--color-gold)", opacity: 0.6 }}
+          style={{ color: "var(--color-gold)" }}
         >
           Modificar respuesta
         </button>
@@ -220,12 +219,11 @@ export default function Confirm() {
       <button
         type="submit"
         disabled={!isValid}
-        class="confirm-btn font-body mt-2 rounded-full px-8 py-3 text-sm font-normal tracking-[0.2em] uppercase transition-all"
+        class="confirm-btn font-body mt-2 rounded-full px-8 py-3 text-sm font-bold tracking-[0.2em] uppercase transition-all"
         style={{
-          background: isValid ? "var(--color-gold)" : "transparent",
-          color: isValid ? "var(--color-primary)" : "var(--color-gold)",
-          border: "1px solid var(--color-gold)",
-          opacity: isValid ? 1 : 0.45,
+          background: isValid ? "var(--color-gold)" : "color-mix(in srgb, var(--color-gold) 20%, transparent)",
+          color: isValid ? "#2a1a08" : "var(--color-text)",
+          border: "2px solid var(--color-gold)",
           cursor: isValid ? "pointer" : "not-allowed",
         }}
       >

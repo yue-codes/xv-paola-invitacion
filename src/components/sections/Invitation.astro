@@ -1,11 +1,12 @@
 ---
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
+import RoseOrnament from "@components/ui/RoseOrnament.astro";
 ---
 
 <section
   id="invitacion"
-  class="relative flex min-h-svh flex-col items-center justify-center px-6 text-center"
-  style="background-color: var(--color-primary);"
+  class="relative z-10 flex min-h-svh flex-col items-center justify-center px-6 text-center"
+  style="background: linear-gradient(to bottom, transparent 0%, var(--color-primary) 18%); margin-top: -48px;"
 >
   <!-- Ornamento superior -->
   <div class="ornament reveal mb-10" aria-hidden="true">
@@ -27,45 +28,43 @@ import LilyOrnament from "@components/ui/LilyOrnament.astro";
     class="reveal flex items-center gap-2 mb-6"
     style="transition-delay: 0.1s;"
   >
-    <LilyOrnament size={11} opacity={0.5} />
+    <RoseOrnament size={11} opacity={0.5} />
     <span
       class="font-body text-xs tracking-[0.3em] uppercase"
       style="color: var(--color-accent); opacity: 0.85;"
     >
       con todo nuestro amor
     </span>
-    <LilyOrnament size={11} opacity={0.5} />
+    <RoseOrnament size={11} opacity={0.5} />
   </div>
 
-  <!-- Texto principal -->
+  <!-- Texto parte 1 -->
   <p
-    class="reveal font-display w-full text-xl leading-relaxed font-semibold sm:text-2xl md:text-3xl"
+    class="reveal font-body w-full text-xl leading-relaxed font-normal sm:text-2xl md:text-3xl"
     style="color: var(--color-text); transition-delay: 0.2s;"
   >
     Queremos compartir contigo la alegría de cumplir
     <br />
-    <em style="color: var(--color-gold);"
-      >15 años de nuestra hermosa hija Paola</em
-    >
-    <br />
-    y celebrar juntos este momento
-    <br />
-    tan especial en la vida de
+    <em style="color: var(--color-gold);">15 años de nuestra hermosa hija</em>
   </p>
 
   <!-- Nombre destacado -->
   <h2
-    class="reveal font-display mt-6 mb-4 text-4xl font-semibold sm:text-5xl"
-    style="color: var(--color-text); transition-delay: 0.35s;"
+    class="reveal font-paola my-4 text-7xl font-normal sm:text-8xl"
+    style="color: #d4a017; transition-delay: 0.3s;"
   >
     Paola
-    <span
-      class="mt-1 block text-2xl italic sm:text-3xl"
-      style="color: var(--color-gold);"
-    >
-      Vázquez Tlalapango
-    </span>
   </h2>
+
+  <!-- Texto parte 2 -->
+  <p
+    class="reveal font-body w-full text-xl leading-relaxed font-normal sm:text-2xl md:text-3xl"
+    style="color: var(--color-text); transition-delay: 0.4s;"
+  >
+    y celebrar juntos este momento
+    <br />
+    tan especial en la vida de
+  </p>
 
   <!-- Ornamento inferior -->
   <div
