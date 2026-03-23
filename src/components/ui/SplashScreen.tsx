@@ -18,7 +18,6 @@ export default function SplashScreen() {
 
   return (
     <div class="splash-wrap" aria-modal="true" role="dialog">
-
       {/* Panel izquierdo */}
       <div class={`panel panel-left ${opening ? "panel-left--open" : ""}`}>
         <div class="panel-inner">
@@ -57,7 +56,6 @@ export default function SplashScreen() {
         class={`center-btn ${opening ? "center-btn--hide" : ""}`}
       >
         <span>Abrir invitación</span>
-        <span class="center-btn-icon">✦</span>
       </button>
 
       <style>{`
@@ -189,16 +187,19 @@ export default function SplashScreen() {
         /* ── Botón central ── */
         .center-btn {
           position: fixed;
-          top: 50%;
+          top: 75%;
           left: 50%;
           transform: translate(-50%, -50%);
           z-index: 10000;
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: flex-end;
           gap: 0.5rem;
-          padding: 0.8rem 2rem;
-          border-radius: 9999px;
+          padding: 0.5rem 1.4rem 0.6rem;
+          padding-top: 1.5rem;
+          min-width: 120px;
+          border-radius: 3px;
           border: 1px solid var(--color-gold);
           background: rgba(0,0,0,0.35);
           backdrop-filter: blur(8px);
@@ -213,8 +214,23 @@ export default function SplashScreen() {
           box-shadow: 0 0 24px rgba(201,168,76,0.3);
           animation: btnPulse 2s ease-in-out infinite;
         }
+        /* Líneas en V del sobre (solapa) */
+        .center-btn::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 45%;
+          background:
+            linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(201,168,76,0.7) calc(50% - 0.5px), rgba(201,168,76,0.7) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            linear-gradient(to bottom left, transparent calc(50% - 0.5px), rgba(201,168,76,0.7) calc(50% - 0.5px), rgba(201,168,76,0.7) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+          pointer-events: none;
+          z-index: 1;
+        }
         .center-btn:hover  { background: rgba(0,0,0,0.5); transform: translate(-50%, -50%) scale(1.05); }
         .center-btn:active { transform: translate(-50%, -50%) scale(0.97); }
+
         .center-btn--hide  { opacity: 0; pointer-events: none; }
         .center-btn-icon {
           color: var(--color-gold);

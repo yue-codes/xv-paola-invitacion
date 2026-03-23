@@ -6,37 +6,24 @@ export default function MusicPlayer() {
   const [ready, setReady] = useState(false);
   const [volume, setVolume] = useState(1);
 
-  // Intenta autoplay; si el navegador lo bloquea, espera el primer toque
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 1;
 
-    const tryPlay = () => {
-      if (!audio.paused) return;
-      audio.play().then(() => setPlaying(true)).catch(() => {});
-    };
+    // Sincronizar estado con eventos nativos del audio
+    const onPlay  = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
 
-    // Intento directo al montar
-    tryPlay();
-
-    // Fallback: primer gesto del usuario
-    const onFirstInteraction = () => {
-      tryPlay();
-      document.removeEventListener("click", onFirstInteraction);
-      document.removeEventListener("touchstart", onFirstInteraction);
-      document.removeEventListener("scroll", onFirstInteraction, { capture: true });
-    };
-
-    document.addEventListener("click", onFirstInteraction);
-    document.addEventListener("touchstart", onFirstInteraction);
-    document.addEventListener("scroll", onFirstInteraction, { capture: true });
+    // Si el audio ya estaba corriendo (iniciado por SplashScreen), reflejar estado
+    if (!audio.paused) setPlaying(true);
 
     return () => {
-      document.removeEventListener("click", onFirstInteraction);
-      document.removeEventListener("touchstart", onFirstInteraction);
-      document.removeEventListener("scroll", onFirstInteraction, { capture: true });
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
     };
   }, []);
 
