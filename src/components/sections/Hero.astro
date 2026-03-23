@@ -10,7 +10,7 @@ import MusicPlayer from "@components/ui/MusicPlayer";
 >
   <!-- Imagen de fondo fija -->
   <div
-    class="absolute inset-0 bg-cover bg-center bg-fixed"
+    class="absolute inset-0 bg-cover bg-fixed bg-center"
     style="background-image: url('/hero.webp');"
     aria-hidden="true"
   >
@@ -22,10 +22,12 @@ import MusicPlayer from "@components/ui/MusicPlayer";
     </div>
   </div>
 
-  <!-- Contenido centrado -->
-  <div class="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
-    <!-- Detalle decorativo superior -->
-    <div class="mb-2 flex items-center gap-3">
+  <!-- Contenido — ocupa toda la altura con 3 zonas -->
+  <div
+    class="relative z-10 flex h-full w-full flex-col items-center justify-between px-6 py-16 text-center"
+  >
+    <!-- Zona superior: "mis xv años" -->
+    <div class="flex items-center gap-3">
       <div
         class="h-px w-12"
         style="background: var(--color-gold); opacity: 0.6;"
@@ -44,43 +46,38 @@ import MusicPlayer from "@components/ui/MusicPlayer";
       </div>
     </div>
 
-    <!-- Nombre animado -->
+    <!-- Zona central: nombre -->
     <h1
-      class="hero-name font-paola text-6xl leading-tight font-semibold sm:text-6xl md:text-7xl"
+      class="hero-name font-paola text-6xl leading-none font-semibold sm:text-6xl md:text-7xl"
       style="color: #e8c870;"
     >
       Paola
       <br />
       <span
         class="font-paola text-4xl font-semibold italic sm:text-4xl md:text-5xl"
-        style="color: #d4af87;"
+        style="color: #e8c870;"
       >
         Vázquez Tlalapango
       </span>
     </h1>
 
-    <!-- Fecha -->
-    <p
-      class="font-body text-sm font-semibold tracking-[0.25em] uppercase"
-      style="color: rgba(255,255,255,0.85); text-shadow: 0 1px 8px rgba(0,0,0,0.5);"
-    >
-      22 · mayo · 2026
-    </p>
-
-    <!-- Divider dorado -->
-    <div
-      class="h-px w-24"
-      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
-    >
+    <!-- Zona inferior: fecha + countdown + música -->
+    <div class="flex flex-col items-center gap-4">
+      <p
+        class="font-body text-sm font-semibold tracking-[0.25em] uppercase"
+        style="color: rgba(255,255,255,0.85); text-shadow: 0 1px 8px rgba(0,0,0,0.5);"
+      >
+        22 · mayo · 2026
+      </p>
+      <div
+        class="h-px w-24"
+        style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+      >
+      </div>
+      <Countdown client:load />
+      <MusicPlayer client:load />
     </div>
-
-    <!-- Countdown -->
-    <Countdown client:load />
-
-    <!-- Reproductor -->
-    <MusicPlayer client:load />
   </div>
-
 </section>
 
 <style>
@@ -103,5 +100,4 @@ import MusicPlayer from "@components/ui/MusicPlayer";
       transform: translateY(0);
     }
   }
-
 </style>

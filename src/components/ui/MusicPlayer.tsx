@@ -14,6 +14,7 @@ export default function MusicPlayer() {
     audio.volume = 1;
 
     const tryPlay = () => {
+      if (!audio.paused) return;
       audio.play().then(() => setPlaying(true)).catch(() => {});
     };
 
@@ -22,19 +23,20 @@ export default function MusicPlayer() {
 
     // Fallback: primer gesto del usuario
     const onFirstInteraction = () => {
-      if (!playing) tryPlay();
+      tryPlay();
       document.removeEventListener("click", onFirstInteraction);
       document.removeEventListener("touchstart", onFirstInteraction);
-      document.removeEventListener("scroll", onFirstInteraction, true);
+      document.removeEventListener("scroll", onFirstInteraction, { capture: true });
     };
 
     document.addEventListener("click", onFirstInteraction);
     document.addEventListener("touchstart", onFirstInteraction);
-    document.addEventListener("scroll", onFirstInteraction, { capture: true, once: true });
+    document.addEventListener("scroll", onFirstInteraction, { capture: true });
 
     return () => {
       document.removeEventListener("click", onFirstInteraction);
       document.removeEventListener("touchstart", onFirstInteraction);
+      document.removeEventListener("scroll", onFirstInteraction, { capture: true });
     };
   }, []);
 
