@@ -85,14 +85,17 @@ export default function SplashScreen() {
         .panel::before {
           content: "";
           position: absolute;
-          inset: 0;
-          background-image: url('/hero.webp');
-          background-size: 200%;
+          top: 0;
+          bottom: 0;
+          width: 200%;
+          background-image: url('/hero3.jpeg');
+          background-size: cover;
           background-position: center;
+          background-repeat: no-repeat;
           filter: brightness(0.55);
         }
-        .panel-left::before  { background-position: left center; }
-        .panel-right::before { background-position: right center; }
+        .panel-left::before  { left: 0; }
+        .panel-right::before { right: 0; }
 
         /* ── Interior ── */
         .panel-inner {
