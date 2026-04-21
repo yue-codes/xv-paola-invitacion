@@ -122,13 +122,14 @@ const photos = [
 
   GLightbox({ selector: ".glightbox", touchNavigation: true });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("gallery-more-btn");
+  const btn = document.getElementById("gallery-more-btn");
 
-    btn?.addEventListener("click", () => {
-      document.querySelectorAll(".gallery-extra").forEach((el) => el.classList.remove("gallery-extra"));
-      btn.closest(".gallery-more-wrap")?.remove();
+  btn?.addEventListener("click", () => {
+    document.querySelectorAll(".gallery-extra").forEach((el) => {
+      el.classList.remove("gallery-extra");
+      el.classList.add("visible");
     });
+    btn.closest(".gallery-more-wrap")?.remove();
   });
 </script>
 

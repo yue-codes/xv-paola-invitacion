@@ -8,13 +8,13 @@ interface Props {
   style?: string;
 }
 
-const { id, bgImage, bgOpacity = 1, overlay = true, class: className, style } = Astro.props;
+const { id, bgImage, bgOpacity = 1, overlay = false, class: className, style } = Astro.props;
 ---
 
 <section id={id} class:list={["relative", className]} style={style}>
   {bgImage && (
     <div
-      class="absolute inset-0 bg-cover bg-fixed bg-center"
+      class="absolute inset-0 bg-cover bg-fixed bg-center pointer-events-none"
       style={`background-image: url('${bgImage}'); opacity: ${bgOpacity};`}
       aria-hidden="true"
     />
