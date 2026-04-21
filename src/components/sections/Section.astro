@@ -1,0 +1,26 @@
+---
+interface Props {
+  id?: string;
+  bgImage?: string;
+  bgOpacity?: number;
+  overlay?: boolean;
+  class?: string;
+  style?: string;
+}
+
+const { id, bgImage, bgOpacity = 1, overlay = true, class: className, style } = Astro.props;
+---
+
+<section id={id} class:list={["relative", className]} style={style}>
+  {bgImage && (
+    <div
+      class="absolute inset-0 bg-cover bg-fixed bg-center"
+      style={`background-image: url('${bgImage}'); opacity: ${bgOpacity};`}
+      aria-hidden="true"
+    />
+  )}
+  {overlay && (
+    <div class="absolute inset-0 pointer-events-none" style="background: rgba(0,0,0,0);" aria-hidden="true" />
+  )}
+  <slot />
+</section>

@@ -1,11 +1,12 @@
 ---
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 ---
 
-<section
+<Section
   id="invitacion"
-  class="relative z-10 flex min-h-svh flex-col items-center justify-center px-6 text-center"
+  class="z-10 flex min-h-svh flex-col items-center justify-center px-6 text-center"
   style="background: linear-gradient(to bottom, transparent 0%, var(--color-primary) 18%); margin-top: -48px;"
 >
   <!-- Ornamento superior -->
@@ -84,7 +85,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
     >
     </div>
   </div>
-</section>
+</Section>
 
 <style>
   .ornament {

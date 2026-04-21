@@ -3,6 +3,7 @@ import ParallaxImage from "@components/ui/ParallaxImage";
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 
 // ─── Actualiza estos links cuando el cliente los confirme ───────────────────
 const MAPS_MISA      = "https://maps.google.com/?q=Parroquia+Espiritu+Santo+Santa+Maria+Guadalupe+Ecatepec";
@@ -50,7 +51,7 @@ const events: Event[] = [
 ];
 ---
 
-<section
+<Section
   id="cuando"
   class="py-24 px-6"
   style="background-color: var(--color-primary);"
@@ -198,7 +199,7 @@ const events: Event[] = [
       }
     </div>
   </div>
-</section>
+</Section>
 
 <style>
   /* Línea timeline: centrada en md, izquierda en móvil */

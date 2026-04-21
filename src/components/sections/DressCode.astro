@@ -2,20 +2,16 @@
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 ---
 
-<section
+<Section
   id="vestimenta"
-  class="relative px-6 py-24"
+  class="px-6 py-24"
   style="background-color: var(--color-bg-soft);"
+  bgImage="/fondo3.jpeg"
+  bgOpacity={0.2}
 >
-  <!-- Fondo decorativo -->
-  <div
-    class="absolute inset-0 bg-cover bg-fixed bg-center"
-    style="background-image: url('/fondo2.webp'); opacity: 0.1;"
-    aria-hidden="true"
-  >
-  </div>
 
   <!-- Encabezado -->
   <div class="relative z-10 mb-14 flex flex-col items-center text-center">
@@ -40,7 +36,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
     >
       <RoseOrnament size={11} opacity={0.5} />
       <span
-        class="font-body text-xs tracking-[0.3em] uppercase"
+        class="font-body text-sm tracking-[0.3em] uppercase"
         style="color: var(--color-accent);"
       >
         por favor tomar en cuenta
@@ -54,7 +50,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
       Código de Vestimenta
     </h2>
     <p
-      class="reveal font-body mt-3 max-w-xs text-sm"
+      class="reveal font-body mt-3 max-w-xs text-base"
       style="color: var(--color-text); transition-delay: 0.15s;"
     >
       Etiqueta formal
@@ -74,7 +70,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
       style="background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-gold) 20%, transparent);"
     >
       <p
-        class="font-body mb-5 text-center text-xs font-bold tracking-[0.25em] uppercase"
+        class="font-body mb-5 text-center text-sm font-bold tracking-[0.25em] uppercase"
         style="color: var(--color-accent);"
       >
         Evitar estos colores
@@ -98,7 +94,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
             </div>
           </div>
           <span
-            class="font-body text-xs tracking-wider"
+            class="font-body text-sm tracking-wider"
             style="color: var(--color-text-dark); font-weight: 700;"
           >
             Rosa
@@ -122,7 +118,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
             </div>
           </div>
           <span
-            class="font-body text-xs tracking-wider"
+            class="font-body text-sm tracking-wider"
             style="color: var(--color-text-dark); font-weight: 700;"
           >
             Dorado
@@ -130,7 +126,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
         </div>
       </div>
       <p
-        class="font-body mt-5 text-center text-xs leading-relaxed font-bold"
+        class="font-body mt-5 text-center text-sm leading-relaxed font-bold"
         style="color: var(--color-text-dark);"
       >
         Estos tonos están reservados para la quinceañera y sus chambelanes.
@@ -140,7 +136,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
     <!-- Nota final -->
     <div class="reveal text-center" style="transition-delay: 0.1s;">
       <p
-        class="font-body text-sm leading-relaxed font-bold"
+        class="font-body text-base leading-relaxed font-bold"
         style="color: var(--color-text-dark);"
       >
         El resto de colores son bienvenidos.<br />
@@ -148,4 +144,4 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
       </p>
     </div>
   </div>
-</section>
+</Section>

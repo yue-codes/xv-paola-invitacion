@@ -2,9 +2,10 @@
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 ---
 
-<section
+<Section
   id="regalos"
   class="px-6 py-24"
   style="background-color: var(--color-primary);"
@@ -34,7 +35,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
     >
       <RoseOrnament size={11} opacity={0.5} />
       <span
-        class="font-body text-xs tracking-[0.3em] uppercase"
+        class="font-body text-sm tracking-[0.3em] uppercase"
         style="color: var(--color-accent); opacity: 0.85;"
       >
         mesa de regalos
@@ -100,7 +101,7 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
 
     <!-- Texto secundario -->
     <p
-      class="reveal font-body text-sm leading-relaxed"
+      class="reveal font-body text-base leading-relaxed"
       style="color: var(--color-text); opacity: 0.75; transition-delay: 0.3s;"
     >
       Pero si deseas brindarnos un obsequio sorpresa o efectivo, colocaremos un <em
@@ -108,4 +109,4 @@ import RoseOrnament from "@components/ui/RoseOrnament.astro";
       > en la recepción del salón, donde podrás depositar tus mejores deseos.
     </p>
   </div>
-</section>
+</Section>

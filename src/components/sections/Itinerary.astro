@@ -1,0 +1,123 @@
+---
+import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
+import LilyOrnament from "@components/ui/LilyOrnament.astro";
+import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
+
+const items = [
+  { time: "8:00 pm",  icon: "⛪", label: "Misa" },
+  { time: "8:30 pm",  icon: "🥂", label: "Recepción" },
+  { time: "9:30 pm",  icon: "🍽️", label: "Cena" },
+  { time: "10:30 pm", icon: "👑", label: "Vals" },
+  { time: "11:00 pm", icon: "🎶", label: "Inicia el baile" },
+  { time: "1:00 am",  icon: "🎛️", label: "Tornamesa" },
+  { time: "3:00 am",  icon: "🌙", label: "Fin del evento", last: true },
+];
+---
+
+<Section
+  id="itinerario"
+  class="py-24 px-6"
+  style="background-color: var(--color-bg-soft);"
+      bgImage="/fondo4.jpeg"
+  bgOpacity={0.2}
+>
+  <!-- Encabezado -->
+  <div class="flex flex-col items-center text-center mb-16">
+    <div class="reveal flex items-center gap-2 mb-6">
+      <div class="h-px w-8" style="background: linear-gradient(to right, transparent, var(--color-gold)); opacity: 0.4;"></div>
+      <FlowerOrnament size={13} opacity={0.5} />
+      <LilyOrnament size={21} opacity={0.75} />
+      <FlowerOrnament size={13} opacity={0.5} />
+      <div class="h-px w-8" style="background: linear-gradient(to left, transparent, var(--color-gold)); opacity: 0.4;"></div>
+    </div>
+    <div class="reveal flex items-center gap-2 mb-4" style="transition-delay: 0.05s;">
+      <RoseOrnament size={11} opacity={0.5} />
+      <span class="text-xs uppercase tracking-[0.3em] font-body" style="color: var(--color-accent); opacity: 0.85;">
+        22 de mayo, 2026
+      </span>
+      <RoseOrnament size={11} opacity={0.5} />
+    </div>
+    <h2
+      class="reveal font-display text-3xl sm:text-4xl font-normal"
+      style="color: var(--color-text); transition-delay: 0.1s;"
+    >
+      Itinerario
+    </h2>
+    <div
+      class="line-draw h-px w-20 mt-5"
+      style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"
+    ></div>
+  </div>
+
+  <!-- Contenedor con fondo suave -->
+  <div
+    class="relative max-w-sm mx-auto rounded-2xl px-6 py-8"
+    style="background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-gold) 18%, transparent); box-shadow: 0 4px 40px color-mix(in srgb, var(--color-gold) 8%, transparent);"
+  >
+    <!-- Línea vertical -->
+    <div
+      class="absolute top-8 bottom-8 left-[52px]"
+      aria-hidden="true"
+      style="width: 1px; background: linear-gradient(to bottom, transparent, var(--color-gold) 10%, var(--color-gold) 90%, transparent); opacity: 0.35;"
+    ></div>
+
+    <div class="flex flex-col gap-0">
+      {items.map((item, i) => (
+        <div
+          class="reveal relative flex items-center gap-4 py-3.5"
+          style={`transition-delay: ${0.1 + i * 0.09}s`}
+        >
+          <!-- Ícono con doble anillo -->
+          <div class="relative flex-shrink-0 flex items-center justify-center z-10" style="width: 44px; height: 44px;">
+            <!-- Anillo exterior -->
+            <div
+              class="absolute inset-0 rounded-full"
+              style="border: 1px solid color-mix(in srgb, var(--color-gold) 35%, transparent);"
+            />
+            <!-- Círculo interior -->
+            <div
+              class="absolute rounded-full"
+              style="inset: 5px; background: color-mix(in srgb, var(--color-gold) 12%, var(--color-surface)); border: 1px solid color-mix(in srgb, var(--color-gold) 50%, transparent); box-shadow: 0 0 10px color-mix(in srgb, var(--color-gold) 15%, transparent);"
+            />
+            <span class="relative text-base leading-none" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));">{item.icon}</span>
+          </div>
+
+          <!-- Texto -->
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <span
+              class="font-body text-xs font-bold uppercase tracking-[0.2em]"
+              style="color: var(--color-gold);"
+            >
+              {item.time}
+            </span>
+            <span
+              class={`font-display text-xl leading-tight ${item.last ? "opacity-55 italic" : ""}`}
+              style="color: var(--color-text-dark);"
+            >
+              {item.label}
+            </span>
+          </div>
+
+          <!-- Línea divisora (excepto último) -->
+          {i < items.length - 1 && (
+            <div
+              class="absolute bottom-0 right-0"
+              style="left: 52px; height: 1px; background: linear-gradient(to right, color-mix(in srgb, var(--color-gold) 20%, transparent), transparent);"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Ornamento esquina superior derecha -->
+    <div class="absolute top-4 right-4 opacity-20">
+      <FlowerOrnament size={18} opacity={1} />
+    </div>
+    <!-- Ornamento esquina inferior izquierda -->
+    <div class="absolute bottom-4 left-4 opacity-20">
+      <FlowerOrnament size={18} opacity={1} />
+    </div>
+  </div>
+</Section>

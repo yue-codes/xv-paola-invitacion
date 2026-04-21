@@ -1,11 +1,13 @@
 ---
 import Countdown from "@components/ui/Countdown";
 import MusicPlayer from "@components/ui/MusicPlayer";
+import Section from "@components/sections/Section.astro";
 ---
 
-<section
+<Section
   id="hero"
-  class="relative flex h-svh min-h-150 flex-col items-center justify-center overflow-hidden"
+  overlay={false}
+  class="flex h-svh min-h-150 flex-col items-center justify-center overflow-hidden"
   style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 64px), 50% 100%, 0 calc(100% - 64px));"
 >
   <!-- Imagen de fondo fija -->
@@ -17,7 +19,7 @@ import MusicPlayer from "@components/ui/MusicPlayer";
     <!-- Overlay degradado -->
     <div
       class="absolute inset-0"
-      style="background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.38) 35%, rgba(0,0,0,0.12) 72%, transparent 100%);"
+      style="background: linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.20) 72%, transparent 100%);"
     >
     </div>
   </div>
@@ -35,7 +37,7 @@ import MusicPlayer from "@components/ui/MusicPlayer";
       </div>
       <span
         class="font-body text-xs tracking-[0.3em] uppercase"
-        style="color: rgba(255,255,255,0.88); text-shadow: 0 1px 8px rgba(0,0,0,0.5);"
+        style="color: #ffffff; text-shadow: 0 1px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6);"
       >
         mis xv años
       </span>
@@ -65,7 +67,7 @@ import MusicPlayer from "@components/ui/MusicPlayer";
     <div class="flex flex-col items-center gap-4">
       <p
         class="font-body text-sm font-semibold tracking-[0.25em] uppercase"
-        style="color: rgba(255,255,255,0.85); text-shadow: 0 1px 8px rgba(0,0,0,0.5);"
+        style="color: #ffffff; text-shadow: 0 1px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6);"
       >
         22 · mayo · 2026
       </p>
@@ -78,7 +80,7 @@ import MusicPlayer from "@components/ui/MusicPlayer";
       <MusicPlayer client:load />
     </div>
   </div>
-</section>
+</Section>
 
 <style>
   /* Animación de entrada del nombre */
@@ -86,8 +88,9 @@ import MusicPlayer from "@components/ui/MusicPlayer";
     animation: fadeUp 1.2s ease forwards;
     opacity: 0;
     text-shadow:
-      0 2px 24px rgba(0, 0, 0, 0.55),
-      0 1px 8px rgba(0, 0, 0, 0.45);
+      0 2px 32px rgba(0, 0, 0, 0.80),
+      0 1px 12px rgba(0, 0, 0, 0.70),
+      0 0px 4px rgba(0, 0, 0, 0.50);
   }
 
   @keyframes fadeUp {

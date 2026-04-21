@@ -2,6 +2,7 @@
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 
 interface Person {
   name: string;
@@ -30,9 +31,9 @@ const groups: FamilyGroup[] = [
 ];
 ---
 
-<section
+<Section
   id="familia"
-  class="relative min-h-svh px-6 flex flex-col justify-center"
+  class="min-h-svh px-6 flex flex-col justify-center"
   style="background-color: var(--color-surface);"
 >
   <!-- Fondo decorativo -->
@@ -105,4 +106,4 @@ const groups: FamilyGroup[] = [
       ))
     }
   </div>
-</section>
+</Section>

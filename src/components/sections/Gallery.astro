@@ -2,6 +2,7 @@
 import LilyOrnament from "@components/ui/LilyOrnament.astro";
 import FlowerOrnament from "@components/ui/FlowerOrnament.astro";
 import RoseOrnament from "@components/ui/RoseOrnament.astro";
+import Section from "@components/sections/Section.astro";
 const photos = [
   { src: "/gallery/gallery1.webp", alt: "Paola - foto 1" },
   { src: "/gallery/gallery2.webp", alt: "Paola - foto 2" },
@@ -13,13 +14,16 @@ const photos = [
   { src: "/gallery/gallery8.webp", alt: "Paola - foto 8" },
   { src: "/gallery/gallery9.webp", alt: "Paola - foto 9" },
   { src: "/gallery/gallery10.webp", alt: "Paola - foto 10" },
+  { src: "/gallery/gallery11.jpeg", alt: "Paola - foto 11" },
 ];
 ---
 
-<section
+<Section
   id="galeria"
   class="px-6 py-24"
   style="background-color: var(--color-surface);"
+    bgImage="/hero2.jpeg"
+  bgOpacity={0.2}
 >
   <!-- Encabezado -->
   <div class="mb-12 flex flex-col items-center text-center">
@@ -95,8 +99,8 @@ const photos = [
   <div class="gallery-more-wrap mt-6 flex justify-center md:hidden">
     <button
       id="gallery-more-btn"
-      class="font-body inline-flex items-center gap-2 rounded-full px-6 py-2 text-xs tracking-widest uppercase transition-opacity hover:opacity-80"
-      style="border: 1px solid var(--color-gold); color: var(--color-gold);"
+      class="font-body inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm tracking-widest uppercase transition-opacity active:opacity-70"
+      style="background: var(--color-gold); color: #fff; font-weight: 700; box-shadow: 0 2px 12px rgba(0,0,0,0.18);"
     >
       Ver más fotos
       <svg
@@ -110,7 +114,7 @@ const photos = [
       </svg>
     </button>
   </div>
-</section>
+</Section>
 
 <script>
   import GLightbox from "glightbox";
@@ -118,12 +122,13 @@ const photos = [
 
   GLightbox({ selector: ".glightbox", touchNavigation: true });
 
-  const btn = document.getElementById("gallery-more-btn");
-  const extras = document.querySelectorAll(".gallery-extra");
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("gallery-more-btn");
 
-  btn?.addEventListener("click", () => {
-    extras.forEach((el) => el.classList.remove("gallery-extra"));
-    btn.closest(".gallery-more-wrap")?.remove();
+    btn?.addEventListener("click", () => {
+      document.querySelectorAll(".gallery-extra").forEach((el) => el.classList.remove("gallery-extra"));
+      btn.closest(".gallery-more-wrap")?.remove();
+    });
   });
 </script>
 
