@@ -20,33 +20,11 @@ export default function SplashScreen() {
     <div class="splash-wrap" aria-modal="true" role="dialog">
       {/* Panel izquierdo */}
       <div class={`panel panel-left ${opening ? "panel-left--open" : ""}`}>
-        <div class="panel-inner">
-          <div class="panel-border" />
-          <div class="panel-content">
-            <div class="panel-ornament">✦</div>
-            <p class="panel-script">Paola</p>
-            <div class="panel-line" />
-            <p class="panel-date">Viernes · 22 · Mayo · 2026</p>
-          </div>
-          <div class="panel-border" />
-        </div>
-        {/* Borde central con bisagra */}
         <div class="panel-edge" />
       </div>
 
       {/* Panel derecho */}
       <div class={`panel panel-right ${opening ? "panel-right--open" : ""}`}>
-        <div class="panel-inner panel-inner--right">
-          <div class="panel-border" />
-          <div class="panel-content">
-            <div class="panel-ornament">✦</div>
-            <p class="panel-label">te invita a celebrar</p>
-            <p class="panel-label">sus</p>
-            <p class="panel-xv">XV Años</p>
-          </div>
-          <div class="panel-border" />
-        </div>
-        {/* Borde central */}
         <div class="panel-edge panel-edge--right" />
       </div>
 
