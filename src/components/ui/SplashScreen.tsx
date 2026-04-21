@@ -26,7 +26,7 @@ export default function SplashScreen() {
             <div class="panel-ornament">✦</div>
             <p class="panel-script">Paola</p>
             <div class="panel-line" />
-            <p class="panel-date">22 · Mayo · 2026</p>
+            <p class="panel-date">Viernes · 22 · Mayo · 2026</p>
           </div>
           <div class="panel-border" />
         </div>
@@ -88,11 +88,11 @@ export default function SplashScreen() {
           top: 0;
           bottom: 0;
           width: 200%;
-          background-image: url('/hero3.jpeg');
+          background-image: url('/fondocarta.webp');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          filter: brightness(0.55);
+          filter: brightness(0.60);
         }
         .panel-left::before  { left: 0; }
         .panel-right::before { right: 0; }
